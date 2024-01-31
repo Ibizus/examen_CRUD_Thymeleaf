@@ -28,6 +28,7 @@ public class PeliculaController {
         model.addAttribute("listaPeliculas", listaPeliculas);
 
         model.addAttribute("peliculasTotales", peliculaService.peliculasTotales());
+        System.out.println(peliculaService.peliculasTotales());
 
         return "peliculas";
     }

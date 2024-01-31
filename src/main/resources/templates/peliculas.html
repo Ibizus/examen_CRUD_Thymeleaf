@@ -29,17 +29,17 @@
     Coste de reemplazo de todas las películas de la categoría de horror (asume que el id de categoría está fijo y no cambia).
     El número de películas por cada categoría.
     -->
-    <!-- ESTADÍSTICAS PELICULAS
+    <!-- ESTADÍSTICAS PELICULAS -->
+    <!--
+        <div class="clearfix col-8 p-3 m-2 bg-light bg-gradient text-muted rounded">
+            <div style="float: left;width: 40%" th:text="Estadisticas">Estadísticas:</div>
 
-    <div class="clearfix col-8 p-3 m-2 bg-light bg-gradient text-muted rounded">
-        <div style="float: left;width: 40%" th:text="Estadisticas">Estadísticas:</div>
-
-        <div style="float: right;width: 50%" th:text="Peliculas totales ' '+${#numbers.formatDecimal(peliculasTotales, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Numero total de peliculas</div>
-    </div>
+            <div style="float: right;width: 50%" th:text="Peliculas totales ' '+${peliculasTotales.getInteger()}">Numero total de películas</div>
+        </div>
     -->
 
 
-    <!-- CABECERA LISTA PELICULAS -->
+        <!-- CABECERA LISTA PELICULAS -->
     <div class="clearfix p-3 mb-2 bg-secondary bg-gradient text-white rounded">
         <div style="float: left;width: 8%" th:text="#{etq.id}">Id</div>
         <div style="float: left;width: 16%" th:text="#{etq.titulo}">Titulo</div>
