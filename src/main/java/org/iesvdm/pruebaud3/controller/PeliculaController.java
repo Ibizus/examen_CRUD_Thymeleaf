@@ -27,7 +27,7 @@ public class PeliculaController {
         List<Pelicula> listaPeliculas =  peliculaService.listAll();
         model.addAttribute("listaPeliculas", listaPeliculas);
 
-        model.addAttribute("peliculasTotales", peliculaService.peliculasTotales();
+        model.addAttribute("peliculasTotales", peliculaService.peliculasTotales());
 
         return "peliculas";
     }
