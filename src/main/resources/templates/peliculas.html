@@ -31,9 +31,9 @@
     -->
     <!-- ESTADÍSTICAS PELICULAS -->
     <div class="clearfix col-8 p-3 m-2 bg-light bg-gradient text-muted rounded">
-        <div style="float: left;width: 40%" th:text="#{title.pedido.estadisticas}">Estadísticas:</div>
-        <div style="float: right;width: 50%" th:text="#{etq.pedidos.media}+' '+${#numbers.formatDecimal(detallesPedidos.media, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Importe medio pedidos</div>
-        <div style="float: right;width: 50%" th:text="#{etq.pedidos.suma}+' '+${#numbers.formatDecimal(detallesPedidos.sumaTotal, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Importe total pedidos</div>
+        <div style="float: left;width: 40%" th:text="Estadisticas">Estadísticas:</div>
+
+        <div style="float: right;width: 50%" th:text="Peliculas totales ' '+${#numbers.formatDecimal(peliculasTotales, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Numero total de peliculas</div>
     </div>
 
 
