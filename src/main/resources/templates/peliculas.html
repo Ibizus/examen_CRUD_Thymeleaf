@@ -1,0 +1,70 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{title.peliculas}">Peliculas</title>
+    <th:block th:insert="~{fragments/head.html :: headfiles}"/>
+</head>
+
+<body>
+<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;" class="text-muted">
+
+    <!-- TITULO VISTA PELICULAS -->
+    <div class="clearfix">
+        <div style="float: left; width: 50%" class="ms-1 text-secondary">
+            <h1 th:text="#{title.peliculas}">Peliculas</h1>
+        </div>
+        <!-- BOTON CREAR PELICULAS -->
+        <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+            <div style="position: absolute; left: 39%; top : 39%;">
+                <form action="/peliculas/crear">
+                    <input type="submit" th:value="#{btn.crear}" value="Crear" class="btn btn-success bg-gradient">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    Conteo de películas totales.
+    Coste de reemplazo de todas las películas de la categoría de horror (asume que el id de categoría está fijo y no cambia).
+    El número de películas por cada categoría.
+    -->
+    <!-- ESTADÍSTICAS PELICULAS -->
+    <div class="clearfix col-8 p-3 m-2 bg-light bg-gradient text-muted rounded">
+        <div style="float: left;width: 40%" th:text="#{title.pedido.estadisticas}">Estadísticas:</div>
+        <div style="float: right;width: 50%" th:text="#{etq.pedidos.media}+' '+${#numbers.formatDecimal(detallesPedidos.media, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Importe medio pedidos</div>
+        <div style="float: right;width: 50%" th:text="#{etq.pedidos.suma}+' '+${#numbers.formatDecimal(detallesPedidos.sumaTotal, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">Importe total pedidos</div>
+    </div>
+
+
+    <!-- CABECERA LISTA PELICULAS -->
+    <div class="clearfix p-3 mb-2 bg-secondary bg-gradient text-white rounded">
+        <div style="float: left;width: 8%" th:text="#{etq.id}">Id</div>
+        <div style="float: left;width: 16%" th:text="#{etq.titulo}">Titulo</div>
+        <div style="float: left;width: 10%" th:text="#{etq.lanzamiento}">Lanzamiento</div>
+        <div style="float: left;width: 10%" th:text="#{etq.idioma}">Idioma</div>
+        <div style="float: left;width: 10%" th:text="#{etq.precio}">Precio</div>
+        <div style="float: left;width: 10%" th:text="#{etq.duracion}">Duracion</div>
+        <div style="float: left;width: 10%" class="text-end" th:text="#{etq.coste}">Coste</div>
+        <div style="float: none;width: auto;overflow: hidden;text-align: center;" th:text="#{etq.accion}"></div>
+    </div>
+    <!-- DATOS LISTA PELICULAS -->
+    <div  th:each="pelicula : ${listaPeliculas}" style="margin-top: 6px;" class="clearfix">
+        <div class="ps-3" style="float: left;width: 8%" th:text="${pelicula.id_pelicula}">output</div>
+        <div style="float: left;width: 16%" th:text="${pelicula.titulo}">output</div>
+        <div style="float: left;width: 10%" th:text="${pelicula.fecha_lanzamiento}">output</div>
+        <div style="float: left;width: 10%" th:text="${pelicula.id_idioma ?: '&nbsp;'}">output</div>
+        <div style="float: left;width: 10%;overflow: hidden" th:text="${#numbers.formatDecimal(pelicula.rental_rate, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">output</div>
+        <div style="float: left;width: 10%" th:text="${pelicula.duracion ?: '&nbsp;'}">output</div>
+        <div style="float: left;width: 10%" class="text-end" th:text="${#numbers.formatDecimal(pelicula.replacement_cost, 1, 'DEFAULT', 2, 'DEFAULT')+' €'}">output</div>
+        <div style="float: none;width: auto;overflow: hidden;text-align: center;">
+            <form th:action="@{/peliculas}" style="display: inline;">
+                <input type="submit" th:value="#{btn.detalle}" value="Ver Detalle" class="btn btn-primary bg-gradient"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
